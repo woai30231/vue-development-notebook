@@ -120,4 +120,55 @@ export default {
 
 ```
 
-并在components目录下新建三个文件Nav1.vue、Nav2
+并在components目录下新建三个文件Nav1.vue、Nav2.vue、Nav3.vue，三个文件内容分别如下：
+
+Nav1.vue
+```vue
+  <template>
+  <div>
+
+    nav1正文
+  </div>
+</template>
+
+<script>
+export default {  
+}
+</script>
+<style>
+</style>
+```
+
+Nav2.vue
+```vue
+  <template>
+  <div>
+
+    nav2正文
+  </div>
+</template>
+
+<script>
+export default {  
+}
+</script>
+<style>
+</style>
+```
+
+Nav3.vue
+```vue
+  <template>
+  <div>
+
+    nav3正文
+  </div>
+</template>
+
+<script>
+export default {  
+}
+</script>
+<style>
+</style>
+```
