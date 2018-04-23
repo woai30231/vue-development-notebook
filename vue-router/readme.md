@@ -119,3 +119,5 @@ export default {
 </style>
 
 ```
+
+并在components目录下新建三个文件Nav1.vue、Nav2
