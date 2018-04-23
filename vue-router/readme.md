@@ -172,3 +172,43 @@ export default {
 <style>
 </style>
 ```
+
+#### 结果
+
+此时我们再打开localhost:8080，我们发现路由默认跳到localhost:8080/#/nav1。而后我们分别切换三个导航，相应内容和路由也会作相应的切换，至此，我们一个简单的关于使用vue-router的实例就完成了！
+
+#### 说明
+
+* **router-view**
+
+该标签是用来放置路由动态切换内容的地方，实际项目开发中也就是放置page内容的地方。这里需要注意的将来的组件内容和配置的路径是匹配对应的，这是在router/index.js里面配置好的。如：
+
+```txt
+  /nav1 对应 Nav1.vue
+  /nav2 对应 Nav2.vue
+  /nav3 对应 Nav3.vue
+```
+
+* **router-link**
+
+在vue-router搭建的项目中，开发者有两种方式切换路由，其一就是使用router-link来实现路由的切换，其二就是使用编程式来切换。如要切换到/nav1路由，两种方式分别实现如下：
+
+router-link
+```
+<router-link :to="{path:'/nav1'}"></router-link>
+```
+
+编程式
+```
+  this.$router.push({path:'/nav1'})
+```
+
+**注：**在使用vue-router之前，需要先调用如下：
+
+```javascript
+  Vue.use(Router)
+```
+
+#### 原理
+
+# 待续………………
