@@ -51,5 +51,15 @@ new Vue({
 })
 </pre>
 
+* 第二步：初试vuex相关文件，在src目录下，分别执行如下命令：
+
+```bash
+ cd src 
+ mkdir vuex && cd vuex 
+ touch index.js action.js mutaction.js state.js
+```
+
+执行上面的命令之后
+
 
 
