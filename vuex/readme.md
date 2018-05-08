@@ -115,8 +115,9 @@ new Vue({
 
 * 第三部，我们来改App.vue文件，实现用户界面。最终App.vue代码如下：
 
-<pre>
- 
+
+```html
+
  <template>
   <div>
     {{count}}
@@ -152,7 +153,8 @@ export default {
 </style>
 
 
-</pre>
+```
+
 
 * 最后一步，浏览器打开localhost:8080，验证结果
 
