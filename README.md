@@ -6,5 +6,7 @@
 
 * [01-如何使用vue-router](https://github.com/woai30231/vue-development-notebook/tree/master/vue-router)
 
-* [01-如何使用vuex](https://github.com/woai30231/vue-development-notebook/tree/master/vuex)
+* [02-如何使用vuex](https://github.com/woai30231/vue-development-notebook/tree/master/vuex)
+
+* [03-如何使用vue生命周期钩子、回调调用](https://github.com/woai30231/vue-development-notebook/tree/master/lifecycle)
 
