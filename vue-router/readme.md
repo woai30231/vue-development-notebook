@@ -203,7 +203,7 @@ router-link
   this.$router.push({path:'/nav1'})
 ```
 
-**注：**在使用vue-router之前，需要先调用如下：
+**注：** 在使用vue-router之前，需要先调用如下：
 
 ```javascript
   Vue.use(Router)
