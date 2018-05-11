@@ -13,4 +13,4 @@
   npm install  && npm run dev
 ```
 
-打开浏览器 http://localhost:8080， 即可浏览一个初始界面。
+打开浏览器 [http://localhost:8080](http://localhost:8080)， 即可浏览一个初始界面。
