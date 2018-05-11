@@ -69,6 +69,7 @@ export default {
     <div>
         <p>父组件传过来的数据:{{parentdata}}</p>
         <p>子组件自身的数据:{{childselfdata}}</p>
+        <p ref="dom">获取dom</p>
     </div>
 </template>
 <script>
@@ -97,7 +98,102 @@ export default {
 在Test.vue里面添加如下代码:
 
 ```javascript
-  beforeCreate(){
-    console.log(this);
+   beforeCreate(){
+      console.log(this.$data);
+      console.log(this.$props);
+      console.log(this.$el);
+      console.log(this.$refs.dom);
   }
 ```
+
+我们发现控制台打印这些数据时得到下面的结果：
+
+<pre>
+  undefined
+  undefined
+  undefined
+  undefined
+</pre>
+所以我们在使用vue开发的过程中，千万别在这个周期里面获取这些数据，没有用！
+
+##### created
+
+增加代码：
+
+```javascript
+  created(){
+      console.log(this.$data);
+      console.log(this.$props);
+      console.log(this.$el);
+      console.log(this.$refs.dom);
+  }
+```
+在控制台发现，我们能正常获取this.$data和this.$props，但是this.$el和this.$refs.dom照样是undefined。所以在这个回调里面千万不要获取跟dom结构相关的数据，因为vue还没有渲染出来！
+
+##### beforeMount
+
+增加代码
+
+```javascript
+     beforeMount(){
+        console.log(this.$data);
+        console.log(this.$props);
+        console.log(this.$el);
+        console.log(this.$refs.dom);
+    }
+```
+
+在控制台发现，我们能正常获取this.$data和this.$props，但是this.$el和this.$refs.dom照样是undefined。所以在这个回调里面千万不要获取跟dom结构相关的数据，因为vue还没有渲染出来！
+
+##### mounted
+
+增加代码
+
+```javascript
+      mounted(){
+        console.log(this.$data);
+        console.log(this.$props);
+        console.log(this.$el);
+        console.log(this.$refs.dom);
+    }  
+```
+
+我们发现在这个回调里面能正常获取四个相关数据。
+
+##### beforeUpdate
+
+增加代码以及改一下代码：
+
+```javascript
+  data(){
+    return {
+      childselfdata:'child',
+      childtimer:0
+    };
+  },
+  created(){
+    setInterval(()=>{
+      this.childtimer++;
+    },1000)
+  },
+  beforeUpdate(){
+    console.log("这里会执行吗？");
+  }
+```
+
+我们会发现这样写的话，beforeUpdate回调根本没有执行！
+
+ok，我们进一步修改html结构：
+
+```html
+  <template>
+      <div>
+          <p>父组件传过来的数据:{{parentdata}}</p>
+          <p>子组件自身的数据:{{childselfdata}}</p>
+          <p ref="dom">获取dom</p>
+          <p>{{childtimer}}</p>
+      </div>
+  </template>
+```
+我们发现，当我们把数据写在模板中时，如果数据改变驱动视图更新，那么beforeUpdate回调就会相应的执行函数，也就是说，视图没更新，只是数据更新，那么beforeUpdate回调是不会执行的！
+
