@@ -14,3 +14,5 @@
 ```
 
 打开浏览器 [http://localhost:8080](http://localhost:8080)， 即可浏览一个初始界面。
+
+### vue生命周期介绍
