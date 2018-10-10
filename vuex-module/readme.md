@@ -6,7 +6,7 @@
 
 #### 怎么使用module
 
-我们看一下vuex是怎么用的。代码如下：
+我们看一下默认vuex是怎么用的。代码如下：
 
 * vuex01.js
 ```javascript
@@ -15,11 +15,71 @@ let store = new Vuex.Store({
       //...
    },
    mutations:{
-      //...
+      demoCtrl(state,{string=""}={}){
+         state.demo = string;
+      }
    },
    state:{
-      //...
+      demo:'this is a demo'
    }
 });  
 ```
+然后我们在组建中使用state和mutations，如：
+
+* html01.vue
+```javascript
+export default {
+   computed:{
+      //计算属性中使用state
+      demo(){
+         return this.$store.state.demo;
+      }
+   },
+   mounted(){
+      //改变状态
+      this.$store.commit('demoCtrl',{string:'这是一个新值'});
+   }
+};
+```
+那我们再来看一下，如果用模块化的方式重新来实现一遍前面的状态数据，如：
+
+* vuex02.js
+```javascript
+let moduleA = {
+   actions:{
+      //...
+   },
+   muations:{
+      demoCtrl(state,{string=""}={}){
+         state.demo = string;
+      }
+   },
+   state:{
+      demo:'this is a demo!'
+   }
+};
+
+let store = new Vuex.Store({
+   modules:{
+      a:moduleA
+   }
+});
+```
+然后我们向下面这样使用，如：
+
+* html02.vue
+```javascript
+export default {
+   computed:{
+      demo(){
+         return this.$store.state.a.demo
+      }
+   },
+   mounted(){
+      //改变状态
+      this.$store.commit('demoCtrl',{string="这是一个新值！"});
+   }
+};   
+```
+我们发现在用module方式的时候，除了获取状态的时候会多一个命名空间之外，其它如mutations还是跟默认方式是一样的。其实这样做的目地是可以让vuex响应全局的mutations操作，而只是给了不同module的state多了一个命名空间。但实际情况，我们有时候不需要vuex响应全局的mutations，或者说，我们可以完全独立，这样可以更好的封装独立模块的功能，于是我们对vuex02.js作如下改动：
 
