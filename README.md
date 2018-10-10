@@ -12,3 +12,5 @@
 
 * [03-如何使用vue生命周期钩子、回调调用](https://github.com/woai30231/vue-development-notebook/tree/master/lifecycle)
 
+* [04-如何模块化管理vuex](https://github.com/woai30231/vue-development-notebook/tree/master/vuex-module)
+
